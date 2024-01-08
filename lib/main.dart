@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_cart_with_nord/features/authentication/screens/auth_screen.dart';
-import 'package:shopping_cart_with_nord/global_variables/global_variables.dart';
-import 'package:shopping_cart_with_nord/router.dart';
+import 'package:shopping_cart_with_node/features/authentication/screens/auth_screen.dart';
+import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
+import 'package:shopping_cart_with_node/router.dart';
 
 void main() {
   runApp(const MyApp());

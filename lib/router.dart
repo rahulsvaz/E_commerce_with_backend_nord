@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_cart_with_nord/features/authentication/screens/auth_screen.dart';
+import 'package:shopping_cart_with_node/features/authentication/screens/auth_screen.dart';
 
 
 Route<dynamic> genarateRoute (RouteSettings routeSettings){
