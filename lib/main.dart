@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_cart_with_nord/features/authentication/screens/auth_screen.dart';
 import 'package:shopping_cart_with_nord/global_variables/global_variables.dart';
+import 'package:shopping_cart_with_nord/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,21 +14,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-home: Scaffold(body: Column
-  (children: [
-    ElevatedButton(onPressed: (){}, child: Text(''))
-],),),
+      onGenerateRoute: (settings)=> genarateRoute(settings),
+      home: AuthScreen(),
       theme: ThemeData(
-        colorScheme: ColorScheme.light(
-          primary: GlobalVariables.secondaryColor
-        ),
+        colorScheme:
+            const ColorScheme.light(primary: GlobalVariables.secondaryColor),
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
-            appBarTheme: AppBarTheme(elevation: 0,iconTheme: IconThemeData(
-              color: Colors.black
-            ))
-
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
       ),
-
     );
   }
 }
