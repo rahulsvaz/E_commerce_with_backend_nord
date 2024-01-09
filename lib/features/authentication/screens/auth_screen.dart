@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopping_cart_with_node/common/widgets/button.dart';
 import 'package:shopping_cart_with_node/common/widgets/textfield.dart';
+import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
 
-enum Auth {SignIn,SignUp}
-
+enum Auth { SignIn, SignUp }
 
 class AuthScreen extends StatefulWidget {
   static const String routeName = '/auth_screen';
@@ -16,8 +17,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  
-  Auth _auth = Auth.SignUp;
   final _signUpFormKey = GlobalKey<FormState>();
   //final _signInFormKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
@@ -34,8 +33,9 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthScreenProvider>(context);
     final height = MediaQuery.sizeOf(context).height;
-   // final width = MediaQuery.sizeOf(context).width;
+    // final width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       backgroundColor: GlobalVariables.greyBackgroundCOlor,
@@ -49,26 +49,28 @@ class _AuthScreenState extends State<AuthScreen> {
                 'Welcome',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
               ),
-              ListTile(
-                tileColor: _auth == Auth.SignUp
-                    ? GlobalVariables.backgroundColor
-                    : GlobalVariables.greyBackgroundCOlor,
-                leading: Radio(
-                  activeColor: GlobalVariables.secondaryColor,
-                  value: Auth.SignUp,
-                  groupValue: _auth,
-                  onChanged: (Auth? value) {
-                    setState(() {
-                      _auth = value!;
-                    });
-                  },
-                ),
-                title: const Text(
-                  'Create Account',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+              Consumer<AuthScreenProvider>(
+                builder: (context,value,child) {
+                  return ListTile(
+                    tileColor: authProvider.auth == Auth.SignUp
+                        ? GlobalVariables.backgroundColor
+                        : GlobalVariables.greyBackgroundCOlor,
+                    leading: Radio(
+                      activeColor: GlobalVariables.secondaryColor,
+                      value: Auth.SignUp,
+                      groupValue: authProvider.auth,
+                      onChanged: (Auth? value) {
+                        authProvider.changeAuth(value!);
+                      },
+                    ),
+                    title: const Text(
+                      'Create Account',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  );
+                }
               ),
-              if (_auth == Auth.SignUp)
+              if (authProvider.auth == Auth.SignUp)
                 Container(
                   color: GlobalVariables.backgroundColor,
                   padding: const EdgeInsets.all(8),
@@ -102,26 +104,28 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                   ),
                 ),
-              ListTile(
-                tileColor: _auth == Auth.SignIn
-                    ? GlobalVariables.backgroundColor
-                    : GlobalVariables.greyBackgroundCOlor,
-                leading: Radio(
-                  activeColor: GlobalVariables.secondaryColor,
-                  value: Auth.SignIn,
-                  groupValue: _auth,
-                  onChanged: (Auth? value) {
-                    setState(() {
-                      _auth = value!;
-                    });
-                  },
-                ),
-                title: const Text(
-                  'Sign In',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+              Consumer<AuthScreenProvider>(
+                builder: (context,value,child) {
+                  return ListTile(
+                    tileColor: authProvider.auth == Auth.SignIn
+                        ? GlobalVariables.backgroundColor
+                        : GlobalVariables.greyBackgroundCOlor,
+                    leading: Radio(
+                      activeColor: GlobalVariables.secondaryColor,
+                      value: Auth.SignIn,
+                      groupValue: authProvider.auth,
+                      onChanged: (Auth? value) {
+                        authProvider.changeAuth(value!);
+                      },
+                    ),
+                    title: const Text(
+                      'Sign In',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  );
+                }
               ),
-              if (_auth == Auth.SignIn)
+              if (authProvider.auth == Auth.SignIn)
                 Container(
                   color: GlobalVariables.backgroundColor,
                   padding: const EdgeInsets.all(8),
