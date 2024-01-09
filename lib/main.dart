@@ -1,10 +1,22 @@
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopping_cart_with_node/features/authentication/screens/auth_screen.dart';
+import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => AuthScreenProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,8 +26,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      onGenerateRoute: (settings)=> genarateRoute(settings),
-      home: AuthScreen(),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home: const AuthScreen(),
       theme: ThemeData(
         colorScheme:
             const ColorScheme.light(primary: GlobalVariables.secondaryColor),

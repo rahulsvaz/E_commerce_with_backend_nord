@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_cart_with_node/features/authentication/screens/auth_screen.dart';
 
-Route<dynamic> genarateRoute(RouteSettings routeSettings) {
+Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case AuthScreen.routeName:
       return MaterialPageRoute(
