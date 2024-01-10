@@ -5,6 +5,7 @@ import 'package:shopping_cart_with_node/common/widgets/textfield.dart';
 import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
 
+// ignore: constant_identifier_names
 enum Auth { SignIn, SignUp }
 
 class AuthScreen extends StatefulWidget {
@@ -70,9 +71,7 @@ class _AuthScreenState extends State<AuthScreen> {
               }),
               if (authProvider.auth == Auth.SignUp)
                 Container(
-                  decoration: BoxDecoration(
-                    color: GlobalVariables.backgroundColor,
-                  ),
+                  color: GlobalVariables.backgroundColor,
                   padding: const EdgeInsets.all(8),
                   child: Form(
                     key: _signUpFormKey,
