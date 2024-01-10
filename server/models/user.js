@@ -28,12 +28,10 @@ const userSchema = mongoose.Schema({
     default: "",
   },
   type: {
-    type,
-    String,
+    type: String,
     default: "user",
   },
 });
-
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
