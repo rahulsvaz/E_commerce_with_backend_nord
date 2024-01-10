@@ -12,7 +12,7 @@ authRouter.post("api/signup", async (req,res)=>{
    const existingUser = await User.findOne({email});
 
    if(existingUser){
-   return res.json({msg:"user with same email already exists"});
+   return res.status(400).json({msg:"user with same email already exists"});
    }
 
 });
