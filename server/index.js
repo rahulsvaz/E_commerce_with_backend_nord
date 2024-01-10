@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require("mongoose");
 
 // middle ware
+app.use(express.json());
 app.use(authRouter);
 
 //  we need to make connection to the database
