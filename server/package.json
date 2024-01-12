@@ -11,9 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "http": "^0.0.1-security",
-    "mongoose": "^6.3.2"
+    "mongoose": "^6.3.2",
+    "punycode": "^2.3.1"
   }
 }
-
