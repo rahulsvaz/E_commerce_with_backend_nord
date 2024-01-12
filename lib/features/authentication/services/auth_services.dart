@@ -1,5 +1,7 @@
-import 'dart:developer';
-
+// ignore_for_file: use_build_context_synchronously
+import 'package:flutter/material.dart';
+import 'package:shopping_cart_with_node/common/constants/error_handling.dart';
+import 'package:shopping_cart_with_node/common/constants/utils.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/model/user_model.dart';
 import 'package:http/http.dart' as http;
@@ -7,11 +9,11 @@ import 'package:http/http.dart' as http;
 class AuthServices {
 // Sign up user
 
-  void signUpUser({
-    required String email,
-    required String name,
-    required String password,
-  }) async {
+  void signUpUser(
+      {required String email,
+      required String name,
+      required String password,
+      required BuildContext context}) async {
     try {
       User user = User(
           id: '',
@@ -32,9 +34,16 @@ class AuthServices {
                   represented as a Map with keys and values, where both the 
                   keys and values are strings. */
           });
-      log(res.body);
+
+      httpErrorHandling(
+          response: res,
+          context: context,
+          onSuccess: () {
+            showSnackbar(context,
+                'Account Has Been Created You Can Login With Same Credentials');
+          });
     } catch (e) {
-      log(e.toString());
+      showSnackbar(context, e.toString());
     }
   }
 }
