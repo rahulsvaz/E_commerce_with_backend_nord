@@ -108,7 +108,10 @@ class _AuthScreenState extends State<AuthScreen> {
                         SizedBox(
                           height: height * 0.02,
                         ),
-                        CustomButton(callback: () {}, label: 'Sign Up'),
+                        CustomButton(callback: () {
+                          signUp();
+                          
+                        }, label: 'Sign Up'),
                       ],
                     ),
                   ),
