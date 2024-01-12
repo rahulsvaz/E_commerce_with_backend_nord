@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart_with_node/common/widgets/button.dart';
 import 'package:shopping_cart_with_node/common/widgets/textfield.dart';
+import 'package:shopping_cart_with_node/features/authentication/services/auth_services.dart';
 import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
 
@@ -20,6 +21,7 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   final _signUpFormKey = GlobalKey<FormState>();
   //final _signInFormKey = GlobalKey<FormState>();
+  final AuthServices authServices = AuthServices();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -30,6 +32,14 @@ class _AuthScreenState extends State<AuthScreen> {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+  }
+
+  void signUp() {
+    authServices.signUpUser(
+        email: _emailController.text,
+        name: _nameController.text,
+        password: _passwordController.text,
+        context: context);
   }
 
   @override
