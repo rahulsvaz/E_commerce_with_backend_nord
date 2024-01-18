@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart_with_node/common/constants/error_handling.dart';
 import 'package:shopping_cart_with_node/common/constants/utils.dart';
-import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
-import 'package:shopping_cart_with_node/features/homeScren/viewModel/userProvider.dart';
+import 'package:shopping_cart_with_node/features/homeScreen/view/home_screen.dart';
+import 'package:shopping_cart_with_node/features/homeScreen/viewModel/userProvider.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/model/user_model.dart';
 import 'package:http/http.dart' as http;
@@ -77,6 +77,7 @@ class AuthServices {
                 .setUser(res.body);
 
             pref.setString('x-auth-token', jsonDecode(res.body)['token']); 
+            Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false); 
           });
     } catch (e) {
       showSnackbar(context, e.toString());
