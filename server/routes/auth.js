@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../models/user");
 const authRouter = express.Router();
 const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 // creating post api
 
@@ -23,15 +24,15 @@ authRouter.post("/api/signup", async (req, res) => {
 
     const hashedPassword = await bcryptjs.hash(password, 8);
 
-    // let is a variable like var in dart 
-    // we added the user in a new variable with hashed password 
+    // let is a variable like var in dart
+    // we added the user in a new variable with hashed password
     let user = new User({
       name,
       email,
       password: hashedPassword,
     });
 
-    // here we are saved the user 
+    // here we are saved the user
     user = await user.save();
     res.json(user);
   } catch (e) {
@@ -39,31 +40,35 @@ authRouter.post("/api/signup", async (req, res) => {
   }
 });
 
+authRouter.post("/api/signin", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-authRouter.post("/api/signin",async (req,res)=> {
+    const user = await User.findOne({ email });
 
- try{ const {email,Password} = req.body;
+    if (!user) {
+      return res
+        .status(400)
+        .json({ msg: "User With this email is not exist!!! " });
+    }
+    // we need to check the hashed password and entering password are the same
 
- const user = await User.findOne({email});
+    const isMatch = await bcryptjs.compare(password, user.password);
 
-if(!user){
-  return res.status(400).json({msg: "User With this email is not exist!!! "});
+    if (!isMatch) {
+      return res.status(400).json({ msg: "Incorrect Password !!!" });
+    }
 
-}
-// we need to check the hashed password and entering password are the same
+    const token = jwt.sign({ id: user._id }, "passwordKey");
+    res.json({ token, ...user._doc });
 
-const isMatch = await bcryptjs.compare(password, user.password)
-
-if(!isMatch){
-  return res.status(400).json({msg: "Incorrect Password !!!"});
-
-}
-
-}
-
-
- catch(e){
-res.status(500).json({ error: e.message });
- }
-})
+    //... means object de structuring
+    // name: 'rahul,
+    // email: like this
+    // it will give us specific properties
+    //
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
 module.exports = authRouter;
