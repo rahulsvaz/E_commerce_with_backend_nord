@@ -1,4 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shopping_cart_with_node/common/constants/error_handling.dart';
 import 'package:shopping_cart_with_node/common/constants/utils.dart';
@@ -42,6 +44,26 @@ class AuthServices {
             showSnackbar(context,
                 'Account Has Been Created You Can Login With Same Credentials');
           });
+    } catch (e) {
+      showSnackbar(context, e.toString());
+    }
+  }
+
+// sign in function
+
+  signInUser(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
+    try {
+      http.Response res = await http.post(Uri.parse('$uri/api/signin'),
+          body: jsonEncode({'email': email, 'password': password}),
+          headers: <String, String>{
+            'Content-type': 'application/json;charset=UTF-8'
+          });
+      print(res.body.toString());
+
+      httpErrorHandling(response: res, context: context, onSuccess: () {});
     } catch (e) {
       showSnackbar(context, e.toString());
     }
