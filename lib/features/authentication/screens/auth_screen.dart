@@ -21,7 +21,7 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   final _signUpFormKey = GlobalKey<FormState>();
-  //final _signInFormKey = GlobalKey<FormState>();
+  final _signInFormKey = GlobalKey<FormState>();
   final AuthServices authServices = AuthServices();
   final Validators validator = Validators();
   final TextEditingController _nameController = TextEditingController();
@@ -41,6 +41,13 @@ class _AuthScreenState extends State<AuthScreen> {
         email: _emailController.text,
         name: _nameController.text,
         password: _passwordController.text,
+        context: context);
+  }
+
+  void signIn() {
+    authServices.signInUser(
+        email: _emailController.text.toString(),
+        password: _passwordController.text.toString(),
         context: context);
   }
 
@@ -149,12 +156,12 @@ class _AuthScreenState extends State<AuthScreen> {
                     color: GlobalVariables.backgroundColor,
                     padding: const EdgeInsets.all(8),
                     child: Form(
-                      key: _signUpFormKey,
+                      key: _signInFormKey,
                       child: Column(
                         children: [
                           AppTextField(
                             validator: validator.emailValidator,
-                            controller: _nameController,
+                            controller: _emailController,
                             hintText: 'Email',
                           ),
                           SizedBox(
@@ -168,7 +175,11 @@ class _AuthScreenState extends State<AuthScreen> {
                           SizedBox(
                             height: height * 0.02,
                           ),
-                          CustomButton(callback: () {}, label: 'Sign In'),
+                          CustomButton(callback: () {
+                            if(_signInFormKey.currentState!.validate()){
+                              signIn();
+                            }
+                          }, label: 'Sign In'),
                         ],
                       ),
                     ),

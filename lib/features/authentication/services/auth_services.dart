@@ -50,7 +50,7 @@ class AuthServices {
   }
 
 // sign in function
-
+// here we are not passing user instance thats why we are using json encoder
   signInUser(
       {required String email,
       required String password,
