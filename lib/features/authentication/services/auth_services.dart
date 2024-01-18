@@ -2,11 +2,15 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopping_cart_with_node/common/constants/error_handling.dart';
 import 'package:shopping_cart_with_node/common/constants/utils.dart';
+import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
+import 'package:shopping_cart_with_node/features/homeScren/viewModel/userProvider.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/model/user_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthServices {
 // Sign up user
@@ -61,9 +65,19 @@ class AuthServices {
           headers: <String, String>{
             'Content-type': 'application/json;charset=UTF-8'
           });
+
       print(res.body.toString());
 
-      httpErrorHandling(response: res, context: context, onSuccess: () {});
+      httpErrorHandling(
+          response: res,
+          context: context,
+          onSuccess: () async {
+            SharedPreferences pref = await SharedPreferences.getInstance();
+            Provider.of<UserProvider>(context, listen: false)
+                .setUser(res.body);
+
+            pref.setString('x-auth-token', jsonDecode(res.body)['token']); 
+          });
     } catch (e) {
       showSnackbar(context, e.toString());
     }
