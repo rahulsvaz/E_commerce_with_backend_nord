@@ -42,9 +42,28 @@ authRouter.post("/api/signup", async (req, res) => {
 
 authRouter.post("/api/signin",async (req,res)=> {
 
- try{ const {email,Password} = req.body;}
- catch(e){
+ try{ const {email,Password} = req.body;
 
+ const user = await User.findOne({email});
+
+if(!user){
+  return res.status(400).json({msg: "User With this email is not exist!!! "});
+
+}
+// we need to check the hashed password and entering password are the same
+
+const isMatch = await bcryptjs.compare(password, user.password)
+
+if(!isMatch){
+  return res.status(400).json({msg: "Incorrect Password !!!"});
+
+}
+
+}
+
+
+ catch(e){
+res.status(500).json({ error: e.message });
  }
 })
 module.exports = authRouter;
