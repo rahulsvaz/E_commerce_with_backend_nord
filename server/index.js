@@ -9,6 +9,8 @@ const mongoose = require("mongoose");
 app.use(express.json());
 app.use(authRouter);
 mongoose.set('strictQuery', true);
+
+
 //  we need to make connection to the database
 const DB =
   "mongodb+srv://mrsvaz:Readytorace799@cluster0.3mh6meu.mongodb.net/?retryWrites=true&w=majority";

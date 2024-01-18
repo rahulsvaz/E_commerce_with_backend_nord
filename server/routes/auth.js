@@ -18,16 +18,33 @@ authRouter.post("/api/signup", async (req, res) => {
         .status(400)
         .json({ msg: "user with same email already exists" });
     }
+
+    // hashed password will decrypt our password and add some random letters on mongo db data base // 8 stands for random 8 in anywhere
+
     const hashedPassword = await bcryptjs.hash(password, 8);
+
+    // let is a variable like var in dart 
+    // we added the user in a new variable with hashed password 
     let user = new User({
       name,
       email,
       password: hashedPassword,
     });
+
+    // here we are saved the user 
     user = await user.save();
     res.json(user);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });
+
+
+authRouter.post("/api/signin",async (req,res)=> {
+
+ try{ const {email,Password} = req.body;}
+ catch(e){
+
+ }
+})
 module.exports = authRouter;

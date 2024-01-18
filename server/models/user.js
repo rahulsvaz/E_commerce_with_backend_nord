@@ -1,4 +1,9 @@
+// this is user model file when we need to create a user we can use this model like dart 
+
 const mongoose = require("mongoose");
+// require stands for similar to dart import 
+
+// here we are creating a user schema
 
 const userSchema = mongoose.Schema({
   name: {
@@ -32,6 +37,6 @@ const userSchema = mongoose.Schema({
     default: "user",
   },
 });
-
+// now we created model here
 const User = mongoose.model("User", userSchema);
 module.exports = User;
