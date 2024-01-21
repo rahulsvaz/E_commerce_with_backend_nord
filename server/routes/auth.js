@@ -11,7 +11,7 @@ authRouter.post("/api/signup", async (req, res) => {
     // getting data from client
     const { name, email, password } = req.body;
     // post the data to database
-
+console.log(name)
     const existingUser = await User.findOne({ email });
     // status code 400 for client error we are not responsible for when user enters an existing user id so we use status code 400 its for client error
     if (existingUser) {
