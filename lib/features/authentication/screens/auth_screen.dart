@@ -15,6 +15,7 @@ class AuthScreen extends StatefulWidget {
   static const String routeName = '/auth_screen';
 
   const AuthScreen({super.key});
+  
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -51,7 +52,11 @@ class _AuthScreenState extends State<AuthScreen> {
         password: _passwordController.text.toString(),
         context: context);
   }
-
+@override
+  void initState() {
+authServices.getUserData(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthScreenProvider>(context);
