@@ -53,8 +53,26 @@ class AuthServices {
     }
   }
 
+  getUserData(BuildContext context) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('x-auth-token');
+      if (token == null) {
+        prefs.setString('x-auth-token', '');
+      }
+      var tokenRes = await http.post(Uri.parse("$uri/tokenIsValid"),
+          headers: <String, String>{
+            'Content Type': 'application/json;charset=UTF-8',
+            'x-auth-token': token!
+          });
 
+      var response = jsonDecode(tokenRes.body);
 
+      if (response == true) {}
+    } catch (e) {
+//
+    }
+  }
 
 // sign in function
 // here we are not passing user instance thats why we are using json encoder
@@ -74,11 +92,11 @@ class AuthServices {
           context: context,
           onSuccess: () async {
             SharedPreferences pref = await SharedPreferences.getInstance();
-            Provider.of<UserProvider>(context, listen: false)
-                .setUser(res.body);
+            Provider.of<UserProvider>(context, listen: false).setUser(res.body);
 
-            pref.setString('x-auth-token', jsonDecode(res.body)['token']); 
-            Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false); 
+            pref.setString('x-auth-token', jsonDecode(res.body)['token']);
+            Navigator.pushNamedAndRemoveUntil(
+                context, HomeScreen.routeName, (route) => false);
           });
     } catch (e) {
       showSnackbar(context, e.toString());

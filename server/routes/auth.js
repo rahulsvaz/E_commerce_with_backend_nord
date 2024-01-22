@@ -10,21 +10,27 @@ const jwt = require("jsonwebtoken");
 
 authRouter.post("/tokenIsValid", async (req, res) => {
   try {
+    // token will pass through  a header not body thats why we used body here
+    
     const token = req.header("x-auth-token");
     if (!token) return res.json(false);
     const verified = jwt.verify(token, "passwordKey");
     if (!verified) return res.json(false);
     const user = await User.findById(verified.id);
-    
+
     if (!user) return res.json(false);
     res.json(true);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });
+
+
+// sign up api
 authRouter.post("/api/signup", async (req, res) => {
   try {
     // getting data from client
+
     const { name, email, password } = req.body;
     // post the data to database
     const existingUser = await User.findOne({ email });
