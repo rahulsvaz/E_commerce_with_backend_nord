@@ -53,6 +53,9 @@ class AuthServices {
     }
   }
 
+
+
+
 // sign in function
 // here we are not passing user instance thats why we are using json encoder
   signInUser(
@@ -65,8 +68,6 @@ class AuthServices {
           headers: <String, String>{
             'Content-type': 'application/json;charset=UTF-8'
           });
-
-      print(res.body.toString());
 
       httpErrorHandling(
           response: res,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart_with_node/features/authentication/screens/auth_screen.dart';
+import 'package:shopping_cart_with_node/features/authentication/services/auth_services.dart';
 import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
 import 'package:shopping_cart_with_node/features/homeScreen/viewModel/userProvider.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
@@ -22,9 +23,20 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AuthServices authServices = AuthServices();
+  @override
+  void initState() {
+
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

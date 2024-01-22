@@ -6,12 +6,27 @@ const jwt = require("jsonwebtoken");
 
 // creating post api
 
+// tokenCheckApi
+
+authRouter.post("/tokenIsValid", async (req, res) => {
+  try {
+    const token = req.header("x-auth-token");
+    if (!token) return res.json(false);
+    const verified = jwt.verify(token, "passwordKey");
+    if (!verified) return res.json(false);
+    const user = await User.findById(verified.id);
+    
+    if (!user) return res.json(false);
+    res.json(true);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
 authRouter.post("/api/signup", async (req, res) => {
   try {
     // getting data from client
     const { name, email, password } = req.body;
     // post the data to database
-console.log(name)
     const existingUser = await User.findOne({ email });
     // status code 400 for client error we are not responsible for when user enters an existing user id so we use status code 400 its for client error
     if (existingUser) {
