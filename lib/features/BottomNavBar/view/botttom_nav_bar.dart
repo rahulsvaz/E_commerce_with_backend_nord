@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart_with_node/features/authentication/viewModel/user_provider.dart';
 import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
-import 'package:shopping_cart_with_node/features/homeScreen/viewModel/home_screen_provider.dart';
+import 'package:shopping_cart_with_node/features/BottomNavBar/viewModel/bottom_nav_provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class BottomNavigationBarMain extends StatefulWidget {
   static const String routeName = '/home';
-  const HomeScreen({super.key});
+  const BottomNavigationBarMain({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<BottomNavigationBarMain> createState() => _BottomNavigationBarMainState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
   //int _page = 0;
   double bottomNavbarWidth = 42;
   double bottomBarBorderWidth = 5;
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
-    final home = Provider.of<HomeScreeProvider>(context);
+    final home = Provider.of<BottomNavProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar:
       
-      Consumer<HomeScreeProvider>(builder: (context, value, child) => 
+      Consumer<BottomNavProvider>(builder: (context, value, child) => 
       
        BottomNavigationBar(
         onTap: (selectedIndex) {
@@ -60,21 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: const Icon(Icons.home),
             ),
           ),
-          BottomNavigationBarItem(
-            label: 'Cart',
-            icon: Container(
-              width: bottomNavbarWidth,
-              decoration: BoxDecoration(
-                border:  Border(
-                  top: BorderSide(
-                      color: home.pages == 1
-                          ? GlobalVariables.selectedNavBarColor
-                          : GlobalVariables.backgroundColor),
-                ),
-              ),
-              child: const Icon(Icons.shopping_cart),
-            ),
-          ),
+         
           BottomNavigationBarItem(
             label: 'Account',
             icon: Container(
@@ -82,14 +68,30 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                      color: home.pages == 2
+                      color: home.pages == 1
                           ? GlobalVariables.selectedNavBarColor
                           : GlobalVariables.backgroundColor),
                 ),
               ),
               child: const Icon(Icons.account_circle_rounded),
             ),
-          )
+          ), BottomNavigationBarItem(
+            label: 'Cart',
+            icon: Container(
+              width: bottomNavbarWidth,
+              decoration: BoxDecoration(
+                border:  Border(
+                  top: BorderSide(
+                      color: home.pages == 2
+                          ? GlobalVariables.selectedNavBarColor
+                          : GlobalVariables.backgroundColor),
+                ),
+              ),
+              child:  Badge.count(
+                count: home.pages,
+                child:  Icon(Icons.shopping_cart)),
+            ),
+          ),
         ],
       ),
     ));

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomeScreeProvider with ChangeNotifier {
+class BottomNavProvider with ChangeNotifier {
   int _pages = 0;
 
   get pages => _pages;

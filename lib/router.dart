@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_cart_with_node/features/authentication/view/auth_screen.dart';
-import 'package:shopping_cart_with_node/features/homeScreen/view/home_screen.dart';
+import 'package:shopping_cart_with_node/features/BottomNavBar/view/botttom_nav_bar.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
@@ -9,10 +9,10 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const AuthScreen(),
       );
-    case HomeScreen.routeName:
+    case BottomNavigationBarMain.routeName:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => const HomeScreen(),
+        builder: (_) => const BottomNavigationBarMain(),
       );
     default:
       return MaterialPageRoute(
