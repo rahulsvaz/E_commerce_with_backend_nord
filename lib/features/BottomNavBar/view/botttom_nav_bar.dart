@@ -2,9 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping_cart_with_node/features/Home/view/home_screen.dart';
+import 'package:shopping_cart_with_node/features/account_page/view/account_page.dart';
 import 'package:shopping_cart_with_node/features/authentication/viewModel/user_provider.dart';
 import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/features/BottomNavBar/viewModel/bottom_nav_provider.dart';
+import 'package:shopping_cart_with_node/features/cart_page/view/cart_screen.dart';
 
 class BottomNavigationBarMain extends StatefulWidget {
   static const String routeName = '/home';
@@ -15,16 +18,20 @@ class BottomNavigationBarMain extends StatefulWidget {
 }
 
 class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
-  //int _page = 0;
   double bottomNavbarWidth = 42;
   double bottomBarBorderWidth = 5;
-
+List<Widget> pages =[
+  const HomeScreen(),
+  const AccountPage(),
+  const CartScreen()
+];
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
     final home = Provider.of<BottomNavProvider>(context);
 
     return Scaffold(
+      body: pages[home.pages],
       appBar: AppBar(
         title: const Text('HomeScreen'),
       ),
@@ -89,7 +96,7 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
               ),
               child:  Badge.count(
                 count: home.pages,
-                child:  Icon(Icons.shopping_cart)),
+                child:  const Icon(Icons.shopping_cart)),
             ),
           ),
         ],
