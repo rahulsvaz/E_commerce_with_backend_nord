@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_cart_with_node/features/authentication/screens/auth_screen.dart';
 import 'package:shopping_cart_with_node/features/authentication/services/auth_services.dart';
 import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
-import 'package:shopping_cart_with_node/features/homeScreen/view/home_screen.dart';
-import 'package:shopping_cart_with_node/features/homeScreen/viewModel/userProvider.dart';
+import 'package:shopping_cart_with_node/features/homeScreen/viewModel/user_provider.dart';
+import 'package:shopping_cart_with_node/features/splash_screen.dart/view/splash_screent.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/router.dart';
 
-void main() {
+void main() async {
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (context) => AuthScreenProvider(),
         ),
-         ChangeNotifierProvider(
+        ChangeNotifierProvider(
           create: (context) => UserProvider(),
         ),
       ],
@@ -35,17 +34,16 @@ class _MyAppState extends State<MyApp> {
   final AuthServices authServices = AuthServices();
   @override
   void initState() {
-
+    authServices.getUserData(context);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: (settings) => generateRoute(settings),
-      home:  
-      Provider.of<UserProvider>(context).user.token.isNotEmpty? const  HomeScreen():
-    const   AuthScreen(),
+      home: const SplashScreen(),
       theme: ThemeData(
         colorScheme:
             const ColorScheme.light(primary: GlobalVariables.secondaryColor),

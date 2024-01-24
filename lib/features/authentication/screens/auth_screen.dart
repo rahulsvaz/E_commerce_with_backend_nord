@@ -7,7 +7,6 @@ import 'package:shopping_cart_with_node/features/authentication/services/auth_se
 import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
 import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
 
-
 // ignore: constant_identifier_names
 enum Auth { SignIn, SignUp }
 
@@ -15,7 +14,6 @@ class AuthScreen extends StatefulWidget {
   static const String routeName = '/auth_screen';
 
   const AuthScreen({super.key});
-  
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -52,12 +50,8 @@ class _AuthScreenState extends State<AuthScreen> {
         password: _passwordController.text.toString(),
         context: context);
   }
-@override
-  void initState() {
-authServices.getUserData(context);
-    super.initState();
-  }
-  @override
+  
+ @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthScreenProvider>(context);
     final height = MediaQuery.sizeOf(context).height;
@@ -181,11 +175,13 @@ authServices.getUserData(context);
                           SizedBox(
                             height: height * 0.02,
                           ),
-                          CustomButton(callback: () {
-                            if(_signInFormKey.currentState!.validate()){
-                              signIn();
-                            }
-                          }, label: 'Sign In'),
+                          CustomButton(
+                              callback: () {
+                                if (_signInFormKey.currentState!.validate()) {
+                                  signIn();
+                                }
+                              },
+                              label: 'Sign In'),
                         ],
                       ),
                     ),
