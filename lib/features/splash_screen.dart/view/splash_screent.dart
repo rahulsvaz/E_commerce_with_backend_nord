@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shopping_cart_with_node/features/authentication/screens/auth_screen.dart';
+import 'package:shopping_cart_with_node/features/authentication/view/auth_screen.dart';
 import 'package:shopping_cart_with_node/features/homeScreen/view/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {

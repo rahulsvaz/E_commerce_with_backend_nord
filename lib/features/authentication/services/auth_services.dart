@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shopping_cart_with_node/common/constants/error_handling.dart';
 import 'package:shopping_cart_with_node/common/constants/utils.dart';
 import 'package:shopping_cart_with_node/features/homeScreen/view/home_screen.dart';
-import 'package:shopping_cart_with_node/features/homeScreen/viewModel/user_provider.dart';
+import 'package:shopping_cart_with_node/features/authentication/viewModel/user_provider.dart';
 import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/model/user_model.dart';
 import 'package:http/http.dart' as http;

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_cart_with_node/features/homeScreen/viewModel/user_provider.dart';
+import 'package:shopping_cart_with_node/features/authentication/viewModel/user_provider.dart';
 import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
 
 class HomeScreen extends StatefulWidget {
