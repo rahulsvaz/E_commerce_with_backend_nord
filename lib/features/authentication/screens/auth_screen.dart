@@ -5,7 +5,7 @@ import 'package:shopping_cart_with_node/common/widgets/button.dart';
 import 'package:shopping_cart_with_node/common/widgets/textfield.dart';
 import 'package:shopping_cart_with_node/features/authentication/services/auth_services.dart';
 import 'package:shopping_cart_with_node/features/authentication/viewModel/auth_screen_provider.dart';
-import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
+import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
 
 // ignore: constant_identifier_names
 enum Auth { SignIn, SignUp }

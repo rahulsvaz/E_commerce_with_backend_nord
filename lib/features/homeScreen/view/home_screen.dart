@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart_with_node/features/homeScreen/viewModel/user_provider.dart';
-import 'package:shopping_cart_with_node/global_variables/global_variables.dart';
+import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final int _page = 0;
+  int _page = 0;
   double bottomNavbarWidth = 42;
   double bottomBarBorderWidth = 5;
 
@@ -27,6 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('HomeScreen'),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (selectedIndex) {
+          _page = selectedIndex;
+          setState(() {});
+        },
         currentIndex: _page,
         selectedItemColor: GlobalVariables.selectedNavBarColor,
         unselectedItemColor: GlobalVariables.unselectedNavBarColor,
