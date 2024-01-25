@@ -20,6 +20,7 @@ class BottomNavigationBarMain extends StatefulWidget {
 class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
   double bottomNavbarWidth = 42;
   double bottomBarBorderWidth = 5;
+  List<String> appBarTittle =['Home','Account','Cart'];
 List<Widget> pages =[
   const HomeScreen(),
   const AccountPage(),
@@ -31,10 +32,12 @@ List<Widget> pages =[
     final home = Provider.of<BottomNavProvider>(context);
 
     return Scaffold(
-      body: pages[home.pages],
-      appBar: AppBar(
-        title: const Text('HomeScreen'),
-      ),
+      body: AnimatedSwitcher(
+     
+        duration:const Duration(seconds: 1),
+       
+      child: pages[home.pages]),
+     
       bottomNavigationBar:
       
       Consumer<BottomNavProvider>(builder: (context, value, child) => 
@@ -52,6 +55,7 @@ List<Widget> pages =[
         items: [
           
           BottomNavigationBarItem(
+            tooltip: 'Home',
             label: 'HomeScreen',
             icon: Container(
               width: bottomNavbarWidth,
