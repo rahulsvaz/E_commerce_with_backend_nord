@@ -52,7 +52,7 @@ List<Widget> pages =[
         items: [
           
           BottomNavigationBarItem(
-            label: 'Home',
+            label: 'HomeScreen',
             icon: Container(
               width: bottomNavbarWidth,
               decoration: BoxDecoration(
