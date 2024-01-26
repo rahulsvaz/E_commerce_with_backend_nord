@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
+import 'package:shopping_cart_with_node/features/Home/view/widgets/below_app_bar.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -11,21 +12,48 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
+    final width = MediaQuery.sizeOf(context).width;
+
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
-          child: AppBar(
-            title: Row(children: [],),
-            flexibleSpace: Container(
-              decoration:
-                const   BoxDecoration(gradient: GlobalVariables.appBarGradient),
-
-            ),
-          ),),
-      backgroundColor: Colors.amber,
-      body: const Center(
-        child: Text('Account Screen'),
+        preferredSize: const Size.fromHeight(50),
+        child: AppBar(
+          title: Row(
+            children: [
+              Image.asset(
+                'assets/images/amazon_in.png',
+                height: height * 0.03,
+              ),
+              Container(
+                padding: EdgeInsets.only(left: width * 0.44),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.notifications_outlined),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.search),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          flexibleSpace: Container(
+            decoration:
+                const BoxDecoration(gradient: GlobalVariables.appBarGradient),
+          ),
+        ),
       ),
+     
+      body: Column(children: <Widget>[
+        BelowAppBar()
+      ],)
+        
+      
     );
   }
 }
