@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/common/widgets/sized_box.dart';
-import 'package:shopping_cart_with_node/features/Home/view/widgets/below_app_bar.dart';
-import 'package:shopping_cart_with_node/features/Home/view/widgets/top_buttons.dart';
+import 'package:shopping_cart_with_node/features/account_page/view/widgets/below_app_bar.dart';
+import 'package:shopping_cart_with_node/features/account_page/view/widgets/top_buttons.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -51,14 +51,13 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ),
         ),
-        body:const  Column(
+        body: const Column(
           children: <Widget>[
-            
             BelowAppBar(),
-           SizedBox10(),
-            TopButtons()
-           
-            ],
+            SizedBox10(),
+            TopButtons(),
+            SizedBox10(),
+          ],
         ));
   }
 }

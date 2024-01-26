@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_cart_with_node/common/widgets/sized_box.dart';
-import 'package:shopping_cart_with_node/features/Home/view/widgets/account_button.dart';
+import 'package:shopping_cart_with_node/features/account_page/view/widgets/account_button.dart';
 
 class TopButtons extends StatefulWidget {
   const TopButtons({super.key});
