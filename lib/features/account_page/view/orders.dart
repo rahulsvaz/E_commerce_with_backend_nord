@@ -12,16 +12,13 @@ class Orders extends StatefulWidget {
 class _OrdersState extends State<Orders> {
   List items = [
     "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
-    
     "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
-        "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
-    
-    "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",    "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
-    
-    "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",    "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
-    
     "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
-   
+    "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
+    "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
+    "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
+    "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
+    "https://media.croma.com/image/upload/v1685966374/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256711_umnwok.png",
   ];
   @override
   Widget build(BuildContext context) {
@@ -33,14 +30,14 @@ class _OrdersState extends State<Orders> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 15),
-              child: Text(
+              padding: const EdgeInsets.only(left: 15),
+              child: const Text(
                 'Your Orders',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
               ),
             ),
             Container(
-              padding: EdgeInsets.only(right: 15),
+              padding: const EdgeInsets.only(right: 15),
               child: TextButton(
                 onPressed: () {},
                 child: Text(
@@ -51,8 +48,7 @@ class _OrdersState extends State<Orders> {
             ),
           ],
         ),
-        Container(
-          
+        SizedBox(
           height: height * 0.22,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,

@@ -7,11 +7,11 @@ class SingleProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black12)
+        border: Border.all(color: Colors.black12),
       ),
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: Image.network(imageUrl),
     );
   }
