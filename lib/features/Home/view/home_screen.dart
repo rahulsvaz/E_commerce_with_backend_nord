@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBar(
           title: Row(
             children: [
@@ -25,18 +25,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
-                      
+        
                       decoration: InputDecoration(
                         hintText: 'Search Amazon.in',
-                        border:   OutlineInputBorder(
+                        border:   const OutlineInputBorder(
                           borderSide: BorderSide.none,
                           borderRadius: BorderRadius.all(Radius.circular(7))
                         ),
                         filled: true
                         ,fillColor: Colors.white,
-                        contentPadding: EdgeInsets.only(top: 10),
-                        prefixIcon:IconButton(icon: Icon(Icons.search),onPressed: (){},)
-                        ,enabledBorder: OutlineInputBorder(
+                        contentPadding: const EdgeInsets.only(top: 10),
+                        prefixIcon:IconButton(icon: const Icon(Icons.search),onPressed: (){},)
+                        ,enabledBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black38,width: 1),
                           
                           borderRadius: BorderRadius.all(Radius.circular(7))
@@ -49,11 +49,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
         ),
       ),
-      body: Center(
+      body: const Center(
         child: Text('HomeScreen'),
       ),
     );
