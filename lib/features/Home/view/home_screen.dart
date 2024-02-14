@@ -45,7 +45,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-              )
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                color: Colors.transparent,height: 42,child: Icon(Icons.mic,size: 25,),)
             ],
           ),
           flexibleSpace: Container(

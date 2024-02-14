@@ -29,7 +29,8 @@ class _TopButtonsState extends State<TopButtons> {
          Row(
           children: [
             AccountButton(
-              callBack: () {},
+              callBack: () {
+              },
               label: 'Log Out',
             ),
                AccountButton(
