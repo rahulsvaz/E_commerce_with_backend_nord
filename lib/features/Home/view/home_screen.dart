@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/features/Home/view/widgets/addressbar.dart';
-import 'package:shopping_cart_with_node/features/Home/view/widgets/top_catogories.dart';
+import 'package:shopping_cart_with_node/features/Home/view/widgets/top_categories.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
