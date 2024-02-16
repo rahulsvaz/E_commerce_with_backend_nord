@@ -26,21 +26,27 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
-        
                       decoration: InputDecoration(
                         hintText: 'Search Amazon.in',
-                        border:   const OutlineInputBorder(
+                        border: const OutlineInputBorder(
                           borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.all(Radius.circular(7))
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(7),
+                          ),
                         ),
-                        filled: true
-                        ,fillColor: Colors.white,
+                        filled: true,
+                        fillColor: Colors.white,
                         contentPadding: const EdgeInsets.only(top: 10),
-                        prefixIcon:IconButton(icon: const Icon(Icons.search),onPressed: (){},)
-                        ,enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black38,width: 1),
-                          
-                          borderRadius: BorderRadius.all(Radius.circular(7))
+                        prefixIcon: IconButton(
+                          icon: const Icon(Icons.search),
+                          onPressed: () {},
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black38, width: 1),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(7),
+                          ),
                         ),
                       ),
                     ),
@@ -49,17 +55,22 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10),
-                color: Colors.transparent,height: 42,child: const Icon(Icons.mic,size: 25,),)
+                color: Colors.transparent,
+                height: 42,
+                child: const Icon(
+                  Icons.mic,
+                  size: 25,
+                ),
+              )
             ],
           ),
           flexibleSpace: Container(
-            decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration:
+                const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
         ),
       ),
-      body:Column(children: [
-        AddressBar()
-      ]),
+      body: const Column(children: [AddressBar()]),
     );
   }
 }
