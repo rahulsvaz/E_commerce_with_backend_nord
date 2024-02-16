@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/features/Home/view/widgets/addressbar.dart';
+import 'package:shopping_cart_with_node/features/Home/view/widgets/top_catogories.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -70,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: const Column(children: [AddressBar()]),
+      body: const Column(children: [AddressBar(),TopCategories()]),
     );
   }
 }
