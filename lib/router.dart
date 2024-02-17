@@ -8,6 +8,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const AuthScreen(),
+        
       );
     case BottomNavigationBarMain.routeName:
       return MaterialPageRoute(
