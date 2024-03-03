@@ -24,5 +24,6 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           ),
         ),
       );
+
   }
 }
