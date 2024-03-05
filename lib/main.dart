@@ -8,6 +8,7 @@ import 'package:shopping_cart_with_node/features/splash_screen.dart/view/splash_
 import 'package:shopping_cart_with_node/common/global_variables/global_variables.dart';
 import 'package:shopping_cart_with_node/router.dart';
 
+
 void main() async {
   runApp(
     MultiProvider(
