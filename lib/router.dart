@@ -15,6 +15,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const BottomNavigationBarMain(),
       );
+
     default:
       return MaterialPageRoute(
         settings: routeSettings,
@@ -24,6 +25,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           ),
         ),
       );
+
 
 
 
